@@ -20,10 +20,8 @@ export class LoginUseCase {
 
         const user = result.toJson();
 
-        // gerar o token de autenticação
         const token = JwtHelper.createToken(user);
 
-        // retornar o usuario com o token
         return {
             ...user,
             token,

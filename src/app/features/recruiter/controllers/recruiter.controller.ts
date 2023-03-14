@@ -8,8 +8,6 @@ export class RecruiterController {
         try {
             const { nome, username, senha, company } = req.body;
 
-            // .. validações dos campos
-
             const usecase = new CreateRecruiterUseCase();
             const result = await usecase.execute({
                 nome,
@@ -20,7 +18,7 @@ export class RecruiterController {
 
             return res.status(200).send({
                 ok: true,
-                message: "Recrutador criado com sucesso",
+                message: "Recruiter created sucesfully.",
                 data: result,
             });
         } catch (error: any) {
@@ -39,7 +37,7 @@ export class RecruiterController {
     
             return res.status(200).send({
                 ok: true,
-                message: "Recrutadores listados com sucesso.",
+                message: "Recruiters listed sucesfully.",
                 data: result,
             })
         } catch(error: any){

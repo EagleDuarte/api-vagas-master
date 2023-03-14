@@ -11,7 +11,7 @@ export const checkLoginRecruiterMiddleware = (
         if (!userHeader) {
             return res.status(401).send({
                 ok: false,
-                message: "token não foi informado, faça o seu login",
+                message: "Token not provided, you are not logged.",
             });
         }
 
@@ -20,7 +20,7 @@ export const checkLoginRecruiterMiddleware = (
         if (user.tipo !== "R") {
             return res.status(403).send({
                 ok: false,
-                message: "usuario deve ser recrutador",
+                message: "This user must be a recruiter.",
             });
         }
 
@@ -33,7 +33,7 @@ export const checkLoginRecruiterMiddleware = (
     } catch (error: any) {
         return res.status(401).send({
             ok: false,
-            message: "token invalido, faça o seu login",
+            message: "Invalid token, you are not logged.",
         });
     }
 };

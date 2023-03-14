@@ -27,13 +27,13 @@ export class JobController {
             if (!result) {
                 res.status(404).send({
                     ok: false,
-                    message: "O recrutador não existe",
+                    message: "This recruiter doesn't exists.",
                 });
             }
 
             return res.status(201).send({
                 ok: true,
-                message: "Vaga criada com sucesso",
+                message: "Job created sucesfully.",
                 data: result,
             });
         } catch (error: any) {
@@ -59,7 +59,7 @@ export class JobController {
             if (!result) {
                 return res.status(404).send({
                     ok: false,
-                    message: "Sorry, user/job not found.",
+                    message: "Sorry, user/job wasn't found.",
                 });
             }
 

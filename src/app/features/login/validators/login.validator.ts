@@ -11,13 +11,13 @@ export const loginValidator = (
         if (!username) {
             return res.status(400).send({
                 ok: false,
-                message: "username não informado",
+                message: "Username not provided.",
             });
         }
         if (!senha) {
             return res.status(400).send({
                 ok: false,
-                message: "senha não informada",
+                message: "Password not provided.",
             });
         }
 

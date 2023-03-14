@@ -11,25 +11,25 @@ export const createRecruiterValidator = (
         if (!nome) {
             return res.status(400).send({
                 ok: false,
-                message: "nome não foi informado",
+                message: "Name not provided.",
             });
         }
         if (!username) {
             return res.status(400).send({
                 ok: false,
-                message: "username não foi informado",
+                message: "Username not provided.",
             });
         }
         if (!senha) {
             return res.status(400).send({
                 ok: false,
-                message: "senha não foi informado",
+                message: "Password not provided.",
             });
         }
         if (!company) {
             return res.status(400).send({
                 ok: false,
-                message: "company não foi informado",
+                message: "Company not provided.",
             });
         }
 

@@ -34,15 +34,13 @@ export class ApplyJobUseCase {
             throw new Error("This candidate is already applying for this job.");
         }
 
-        // Valida se job está ativa
         if (!job.indAtivo) {
             throw new Error("This job is not available.");
         }
 
-        // Verifica se a data limite da job já foi alcançada
         if (job.dtLimite < new Date()) {
             throw new Error(
-                "A job não está mais aceitando candidaturas devido ao prazo"
+                "This job is not aceppting candidacies anymore."
             );
         }
 

@@ -7,17 +7,17 @@ export const createCandidateValidator = (req: Request, res: Response, next: Next
 
     if (!nome) return res.status(400).send({
       ok: false,
-      message: "Nome necessário!"
+      message: "Name not provided!"
     })
 
     if (!username) return res.status(400).send({
       ok: false,
-      message: "username necessário!"
+      message: "Username not provided!"
     })
 
     if (!senha) return res.status(400).send({
       ok: false,
-      message: "senha necessário!"
+      message: "Password not provided!"
     })
 
     next()

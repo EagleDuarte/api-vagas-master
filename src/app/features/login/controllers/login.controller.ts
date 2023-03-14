@@ -13,13 +13,13 @@ export class LoginController {
                 res.status(401).send({
                     ok: false,
                     message:
-                        "erro ao realizar login, verifique username e senha",
+                        "Login error, verify your username and password.",
                 });
             }
 
             return res.status(200).send({
                 ok: true,
-                message: "login feito com sucesso",
+                message: "Login done sucessfuly.",
                 data: result,
             });
         } catch (error: any) {

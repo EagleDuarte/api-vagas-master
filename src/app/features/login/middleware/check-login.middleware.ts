@@ -12,7 +12,7 @@ export const checkLoginMiddleware = (
         if (!token) {
             return res.status(401).send({
                 ok: false,
-                message: "token não foi informado, faça o seu login",
+                message: "Token not provided, you are not logged.",
             });
         }
 
@@ -27,7 +27,7 @@ export const checkLoginMiddleware = (
     } catch (error: any) {
         return res.status(401).send({
             ok: false,
-            message: "token invalido, faça o seu login",
+            message: "Invalid token, you are not logged.",
         });
     }
 };
