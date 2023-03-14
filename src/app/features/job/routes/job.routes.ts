@@ -1,22 +1,22 @@
 import { Router } from "express";
 import { checkLoginCandidateMiddleware } from "../../candidate/middlewares/check-login-candidate";
 import { checkLoginMiddleware } from "../../login/middleware/check-login.middleware";
-import { checkLoginRecrutadorMiddleware } from "../../recrutador/middleware/check-login-recrutador";
-import { VagaController } from "../controllers/vaga.controller";
+import { checkLoginRecruiterMiddleware } from "../../recruiter/middleware/check-login-recruiter";
+import { JobController } from "../controllers/job.controller";
 
-export const vagaRoutes = () => {
+export const jobRoutes = () => {
     const router = Router();
 
     router.post(
         "/",
-        [checkLoginMiddleware, checkLoginRecrutadorMiddleware],
-        new VagaController().create
+        [checkLoginMiddleware, checkLoginRecruiterMiddleware],
+        new JobController().create
     );
 
     router.post(
-        "/apply/:idVaga",
+        "/apply/:idJob",
         [checkLoginMiddleware, checkLoginCandidateMiddleware],
-        new VagaController().apply
+        new JobController().apply
     );
 
     return router;

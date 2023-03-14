@@ -1,10 +1,10 @@
 import { CandidateModel } from "./candidate.model";
-import { VagaModel } from "./vaga.model";
+import { JobModel } from "./job.model";
 
 export class CandidacyModel {
     constructor(
         private _candidate: CandidateModel,
-        private _vaga: VagaModel,
+        private _job: JobModel,
         private _indSucesso: boolean,
         private _dtCandidacy: Date
     ) {}
@@ -13,8 +13,8 @@ export class CandidacyModel {
         return this._candidate;
     }
 
-    public get vaga() {
-        return this._vaga;
+    public get job() {
+        return this._job;
     }
 
     public get indSucesso() {
@@ -28,7 +28,7 @@ export class CandidacyModel {
     public toJson() {
         return {
             candidate: this._candidate.toJson(),
-            vaga: this._vaga.toJson(),
+            job: this._job.toJson(),
             indSucesso: this._indSucesso,
             dtCandidacy: this._dtCandidacy,
         };

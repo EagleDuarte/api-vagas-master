@@ -7,7 +7,7 @@ import {
     PrimaryColumn,
 } from "typeorm";
 import { UserEntity } from "./user.entity";
-import { VagaEntity } from "./vaga.entity";
+import { JobEntity } from "./job.entity";
 
 @Entity({
     name: "candidacy",
@@ -19,9 +19,9 @@ export class CandidacyEntity {
     idCandidate: string;
 
     @PrimaryColumn({
-        name: "id_vaga",
+        name: "id_job",
     })
-    idVaga: string;
+    idJob: string;
 
     @Column({
         name: "id_sucesso",
@@ -39,11 +39,11 @@ export class CandidacyEntity {
     })
     candidate: UserEntity;
 
-    @ManyToOne(() => VagaEntity, {
+    @ManyToOne(() => JobEntity, {
         eager: true,
     })
     @JoinColumn({
-        name: "id_vaga",
+        name: "id_job",
     })
-    vaga: VagaEntity;
+    job: JobEntity;
 }

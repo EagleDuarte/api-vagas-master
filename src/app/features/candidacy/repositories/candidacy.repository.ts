@@ -1,7 +1,7 @@
 import { DatabaseConnection } from "../../../../main/database/typeorm.connection";
 import { CandidacyModel } from "../../../models/candidacy.model";
-import { UsuarioModel } from "../../../models/usuario.model";
-import { VagaModel } from "../../../models/vaga.model";
+import { UserModel } from "../../../models/user.model";
+import { JobModel } from "../../../models/job.model";
 import { CandidacyEntity } from "../../../shared/entities/candidacy.entity";
 
 export class CandidacyRepository {
@@ -11,7 +11,7 @@ export class CandidacyRepository {
     public async create(candidacy: CandidacyModel) {
         const CandidacyEntity = this.repository.create({
             idCandidate: candidacy.candidate.id,
-            idVaga: candidacy.vaga.id,
+            idJob: candidacy.job.id,
             indSucesso: candidacy.indSucesso,
             dtCandidacy: candidacy.dtCandidacy,
         });
@@ -20,16 +20,16 @@ export class CandidacyRepository {
 
         const result = await this.repository.findOneBy({
             idCandidate: candidacy.candidate.id,
-            idVaga: candidacy.vaga.id,
+            idJob: candidacy.job.id,
         });
 
         return this.mapEntityToModel(result!);
     }
 
-    public async get(idCandidate: string, idVaga: string) {
+    public async get(idCandidate: string, idJob: string) {
         const result = await this.repository.findOneBy({
             idCandidate,
-            idVaga,
+            idJob,
         });
 
         if (!result) {
@@ -40,37 +40,37 @@ export class CandidacyRepository {
     }
 
     private mapEntityToModel(entity: CandidacyEntity) {
-        const candidate = UsuarioModel.create(
+        const candidate = UserModel.create(
             entity.candidate.id,
             entity.candidate.nome,
             entity.candidate.username,
             entity.candidate.tipo,
             entity.candidate.senha,
-            entity.candidate.empresa
+            entity.candidate.company
         );
 
-        const recrutadorVaga = UsuarioModel.create(
-            entity.vaga.recrutador.id,
-            entity.vaga.recrutador.nome,
-            entity.vaga.recrutador.username,
-            entity.vaga.recrutador.tipo,
-            entity.vaga.recrutador.senha,
-            entity.vaga.recrutador.empresa
+        const recruiterjob = UserModel.create(
+            entity.job.recruiter.id,
+            entity.job.recruiter.nome,
+            entity.job.recruiter.username,
+            entity.job.recruiter.tipo,
+            entity.job.recruiter.senha,
+            entity.job.recruiter.company
         );
 
-        const vaga = VagaModel.create(
-            entity.vaga.id,
-            entity.vaga.descricao,
-            entity.vaga.recrutador.empresa,
-            entity.vaga.dtLimite,
-            entity.vaga.indAtivo,
-            recrutadorVaga,
-            entity.vaga.maxCandidates
+        const job = JobModel.create(
+            entity.job.id,
+            entity.job.description,
+            entity.job.recruiter.company,
+            entity.job.dtLimite,
+            entity.job.indAtivo,
+            recruiterjob,
+            entity.job.maxCandidates
         );
 
         return new CandidacyModel(
             candidate,
-            vaga,
+            job,
             entity.indSucesso,
             entity.dtCandidacy
         );

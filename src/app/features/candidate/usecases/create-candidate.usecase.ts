@@ -1,5 +1,5 @@
 import { CandidateModel } from "../../../models/candidate.model";
-import { UsuarioModel } from "../../../models/usuario.model";
+import { UserModel } from "../../../models/user.model";
 import { UserRepository } from "../../user/repositories/user.repository";
 
 interface CreateCandidateDTO {

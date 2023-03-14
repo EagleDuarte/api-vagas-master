@@ -1,6 +1,6 @@
-import { UsuarioModel } from "./usuario.model";
+import { UserModel } from "./user.model";
 
-export class CandidateModel extends UsuarioModel {
+export class CandidateModel extends UserModel {
   constructor(
     nome: string,
     username: string,

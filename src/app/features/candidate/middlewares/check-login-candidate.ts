@@ -20,7 +20,7 @@ export const checkLoginCandidateMiddleware = (
         if (user.tipo !== "C") {
             return res.status(403).send({
                 ok: false,
-                message: "usuario deve ser candidato",
+                message: "Este usuario deve ser candidato",
             });
         }
 

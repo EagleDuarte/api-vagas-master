@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 
-export const createRecrutadorValidator = (
+export const createRecruiterValidator = (
     req: Request,
     res: Response,
     next: NextFunction
 ) => {
     try {
-        const { nome, username, senha, empresa } = req.body;
+        const { nome, username, senha, company } = req.body;
 
         if (!nome) {
             return res.status(400).send({
@@ -26,10 +26,10 @@ export const createRecrutadorValidator = (
                 message: "senha não foi informado",
             });
         }
-        if (!empresa) {
+        if (!company) {
             return res.status(400).send({
                 ok: false,
-                message: "empresa não foi informado",
+                message: "company não foi informado",
             });
         }
 

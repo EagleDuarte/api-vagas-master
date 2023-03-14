@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { GetRecrutadorUseCase } from "../usecases/get-recrutador.usecase";
+import { getRecruiterUseCase } from "../usecases/get-recruiter.usecase";
 
-export const checkDuplicateRecrutadorValidator = async (
+export const checkDuplicateRecruiterValidator = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -9,13 +9,13 @@ export const checkDuplicateRecrutadorValidator = async (
     try {
         const { username } = req.body;
 
-        const usecase = new GetRecrutadorUseCase();
+        const usecase = new getRecruiterUseCase();
         const result = await usecase.execute(username);
 
         if (result) {
             return res.status(400).send({
                 ok: false,
-                message: "recrutador já existe",
+                message: "This recruiter already exists.",
             });
         }
 

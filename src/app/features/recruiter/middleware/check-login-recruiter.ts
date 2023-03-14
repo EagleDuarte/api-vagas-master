@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-export const checkLoginRecrutadorMiddleware = (
+export const checkLoginRecruiterMiddleware = (
     req: Request,
     res: Response,
     next: NextFunction
@@ -26,7 +26,7 @@ export const checkLoginRecrutadorMiddleware = (
 
         req.body = {
             ...req.body,
-            idRecrutador: user.id,
+            idRecruiter: user.id,
         };
 
         return next();

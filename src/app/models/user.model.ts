@@ -1,6 +1,6 @@
 import { v4 as idUsuario } from "uuid";
 
-export class UsuarioModel {
+export class UserModel {
     private _id: string;
 
     constructor(
@@ -8,7 +8,7 @@ export class UsuarioModel {
         private _userName: string,
         private _senha: string,
         private _tipo: string,
-        private _empresa?: string
+        private _company?: string
     ) {
         this._id = idUsuario();
     }
@@ -49,12 +49,12 @@ export class UsuarioModel {
         this._tipo = tipo;
     }
 
-    public get empresa(): string | undefined {
-        return this._empresa;
+    public get company(): string | undefined {
+        return this._company;
     }
 
-    public set empresa(empresa: string | undefined) {
-        this._empresa = empresa;
+    public set company(company: string | undefined) {
+        this._company = company;
     }
 
     public toJson() {
@@ -63,7 +63,7 @@ export class UsuarioModel {
             nome: this._nome,
             userName: this._userName,
             tipo: this._tipo,
-            empresa: this._empresa,
+            company: this._company,
         };
     }
 
@@ -73,9 +73,9 @@ export class UsuarioModel {
         userName: string,
         tipo: string,
         senha: string,
-        empresa?: string
+        company?: string
     ) {
-        const usuario = new UsuarioModel(nome, userName, senha, tipo, empresa);
+        const usuario = new UserModel(nome, userName, senha, tipo, company);
         usuario._id = id;
 
         return usuario;

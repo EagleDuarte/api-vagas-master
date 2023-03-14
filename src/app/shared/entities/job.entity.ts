@@ -13,14 +13,14 @@ import { CandidacyEntity } from "./candidacy.entity";
 import { UserEntity } from "./user.entity";
 
 @Entity({
-    name: "vaga",
+    name: "job",
 })
-export class VagaEntity {
+export class JobEntity {
     @PrimaryColumn()
     id!: string;
 
     @Column()
-    descricao: string;
+    description: string;
 
     @Column()
     dtLimite: Date;
@@ -32,9 +32,9 @@ export class VagaEntity {
     maxCandidates: number;
 
     @Column({
-        name: "id_recrutador",
+        name: "id_recruiter",
     })
-    idRecrutador: string;
+    idRecruiter: string;
 
     @CreateDateColumn({
         name: "created_at",
@@ -50,10 +50,10 @@ export class VagaEntity {
         eager: true,
     })
     @JoinColumn({
-        name: "id_recrutador",
+        name: "id_recruiter",
     })
-    recrutador: UserEntity;
+    recruiter: UserEntity;
 
-    @OneToMany(() => CandidacyEntity, (cand) => cand.vaga)
+    @OneToMany(() => CandidacyEntity, (cand) => cand.job)
     candidaturas: CandidacyEntity[];
 }

@@ -1,15 +1,15 @@
 import { DatabaseConnection } from "../../../../main/database/typeorm.connection";
-import { UsuarioModel } from "../../../models/usuario.model";
+import { UserModel } from "../../../models/user.model";
 import { UserEntity } from "../../../shared/entities/user.entity";
 
 export class UserRepository {
     private repository =
         DatabaseConnection.connection.getRepository(UserEntity);
 
-    public async create(user: UsuarioModel) {
+    public async create(user: UserModel) {
         const userEntity = this.repository.create({
             id: user.id,
-            empresa: user.empresa,
+            company: user.company,
             nome: user.nome,
             senha: user.senha,
             tipo: user.tipo,
@@ -35,13 +35,13 @@ export class UserRepository {
     }
 
     private mapEntityToModel(userEntity: UserEntity) {
-        const user = UsuarioModel.create(
+        const user = UserModel.create(
             userEntity.id,
             userEntity.nome,
             userEntity.username,
             userEntity.tipo,
             userEntity.senha,
-            userEntity.empresa
+            userEntity.company
         );
 
         return user;

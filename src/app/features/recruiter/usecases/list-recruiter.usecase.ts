@@ -1,6 +1,6 @@
 import { UserRepository } from "../../user/repositories/user.repository";
 
-export class ListRecrutadorUseCase {
+export class RecruiterUseCaseList {
     public async execute() {
         const repository = new UserRepository();
 

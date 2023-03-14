@@ -1,27 +1,27 @@
 import { Request, Response } from "express";
-import { AplicarVagaUseCase } from "../usecases/aplicar-vaga.usecase";
-import { CreateVagaUseCase } from "../usecases/create-vaga.usecase";
+import { ApplyJobUseCase } from "../usecases/apply-job.usecase";
+import { CreateJobUseCase } from "../usecases/create-job.usecase";
 
-export class VagaController {
+export class JobController {
     public async create(req: Request, res: Response) {
         try {
             const {
-                descricao,
-                empresa,
+                description,
+                company,
                 dtLimite,
                 indAtivo,
                 maxCandidates,
-                idRecrutador,
+                idRecruiter,
             } = req.body;
 
-            const usecase = new CreateVagaUseCase();
+            const usecase = new CreateJobUseCase();
             const result = await usecase.execute({
-                descricao,
-                empresa,
+                description,
+                company,
                 dtLimite,
                 indAtivo,
                 maxCandidates,
-                idRecrutador,
+                idRecruiter,
             });
 
             if (!result) {
@@ -47,25 +47,25 @@ export class VagaController {
     public async apply(req: Request, res: Response) {
         try {
             const { idCandidate, indSucesso } = req.body;
-            const { idVaga } = req.params;
+            const { idJob } = req.params;
 
-            const usecase = new AplicarVagaUseCase();
+            const usecase = new ApplyJobUseCase();
             const result = await usecase.execute({
                 idCandidate,
-                idVaga,
+                idJob,
                 indSucesso,
             });
 
             if (!result) {
                 return res.status(404).send({
                     ok: false,
-                    message: "usuario/vaga nao encontrado",
+                    message: "Sorry, user/job not found.",
                 });
             }
 
             return res.status(201).send({
                 ok: true,
-                message: "candidatura feita com sucesso",
+                message: "Candidacy created sucesfully.",
                 data: result,
             });
         } catch (error: any) {

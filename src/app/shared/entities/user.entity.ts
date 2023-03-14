@@ -35,7 +35,7 @@ export class UserEntity {
         length: 60,
         nullable: true,
     })
-    empresa: string;
+    company: string;
 
     @CreateDateColumn({
         name: "created_at",

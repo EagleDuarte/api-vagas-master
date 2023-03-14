@@ -1,38 +1,38 @@
-import { v4 as idVaga } from "uuid";
-import { UsuarioModel } from "./usuario.model";
+import { v4 as idJob } from "uuid";
+import { UserModel } from "./user.model";
 
-export class VagaModel {
+export class JobModel {
     private _id: string;
 
     constructor(
-        private _descricao: string,
-        private _empresa: string,
+        private _description: string,
+        private _company: string,
         private _dtLimite: Date,
         private _indAtivo: boolean,
-        private _recrutador: UsuarioModel,
+        private _recruiter: UserModel,
         private _maxCandidates?: number
     ) {
-        this._id = idVaga();
+        this._id = idJob();
     }
 
     public get id() {
         return this._id;
     }
 
-    public get descricao() {
-        return this._descricao;
+    public get description() {
+        return this._description;
     }
 
-    public set descricao(descricao: string) {
-        this._descricao = descricao;
+    public set description(description: string) {
+        this._description = description;
     }
 
-    public get empresa() {
-        return this._empresa;
+    public get company() {
+        return this._company;
     }
 
-    public set empresa(empresa: string) {
-        this._empresa = empresa;
+    public set company(company: string) {
+        this._company = company;
     }
 
     public get dtLimite() {
@@ -59,45 +59,45 @@ export class VagaModel {
         this._maxCandidates = maxCandidates;
     }
 
-    public get recrutador() {
-        return this._recrutador;
+    public get recruiter() {
+        return this._recruiter;
     }
 
-    public set recrutador(recrutador: UsuarioModel) {
-        this._recrutador = recrutador;
+    public set recruiter(recruiter: UserModel) {
+        this._recruiter = recruiter;
     }
 
     public toJson() {
         return {
             id: this._id,
-            descricao: this.descricao,
-            empresa: this.empresa,
+            description: this.description,
+            company: this.company,
             dtLimite: this.dtLimite,
             indAtivo: this.indAtivo,
             maxCandidates: this.maxCandidates,
-            recrutador: this.recrutador.toJson(),
+            recruiter: this.recruiter.toJson(),
         };
     }
 
     public static create(
         id: string,
-        descricao: string,
-        empresa: string,
+        description: string,
+        company: string,
         dtLimite: Date,
         indAtivo: boolean,
-        recrutador: UsuarioModel,
+        recruiter: UserModel,
         maxCandidates?: number
     ) {
-        const vaga = new VagaModel(
-            descricao,
-            empresa,
+        const job = new JobModel(
+            description,
+            company,
             dtLimite,
             indAtivo,
-            recrutador,
+            recruiter,
             maxCandidates
         );
-        vaga._id = id;
+        job._id = id;
 
-        return vaga;
+        return job;
     }
 }

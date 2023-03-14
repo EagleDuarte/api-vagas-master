@@ -1,21 +1,21 @@
 
 import { Request, Response } from "express";
-import { CreateRecrutadorUseCase } from "../usecases/create-recrutador.usecase";
-import { ListRecrutadorUseCase } from "../usecases/list-recrutador.usecase";
+import { CreateRecruiterUseCase } from "../usecases/create-recruiter.usecase";
+import { RecruiterUseCaseList  } from "../usecases/list-recruiter.usecase";
 
-export class RecrutadorController {
+export class RecruiterController {
     public async create(req: Request, res: Response) {
         try {
-            const { nome, username, senha, empresa } = req.body;
+            const { nome, username, senha, company } = req.body;
 
             // .. validações dos campos
 
-            const usecase = new CreateRecrutadorUseCase();
+            const usecase = new CreateRecruiterUseCase();
             const result = await usecase.execute({
                 nome,
                 userName: username,
                 senha,
-                empresa,
+                company,
             });
 
             return res.status(200).send({
@@ -33,7 +33,7 @@ export class RecrutadorController {
 
     public async list(req: Request, res: Response) {
         try {
-            const usecase = new ListRecrutadorUseCase();
+            const usecase = new RecruiterUseCaseList ();
             const result = await usecase.execute();
     
     
